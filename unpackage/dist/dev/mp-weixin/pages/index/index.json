@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "Home",
-  "usingComponents": {
-    "unicloud-db": "../../node-modules/@dcloudio/uni-components/lib/unicloud-db/unicloud-db",
-    "uni-easyinput": "../../uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput"
-  }
-}
