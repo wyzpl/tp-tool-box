@@ -1,0 +1,1 @@
+<view class="layout-wrap"><slot></slot></view>

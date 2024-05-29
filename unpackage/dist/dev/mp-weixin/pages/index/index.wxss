@@ -1,0 +1,15 @@
+/* 水平间距 */
+/* 水平间距 */
+.container.data-v-1cf27b2a {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+.op-btn.data-v-1cf27b2a {
+  margin-top: 20px;
+  width: 120px;
+  height: 32px;
+  line-height: 32px;
+}
