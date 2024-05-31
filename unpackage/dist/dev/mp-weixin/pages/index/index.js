@@ -1,92 +1,127 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const Data = [
+  {
+    prizeName: "蚂蚁上树",
+    prizeId: 1,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "柠檬鸡块",
+    prizeId: 2,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "菠萝咕咾肉",
+    prizeId: 3,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "排骨焖鸡",
+    prizeId: 4,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "干炒鸡块",
+    prizeId: 5,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "可乐鸡翅",
+    prizeId: 6,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "青椒牛肉丝",
+    prizeId: 7,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "番茄炒蛋",
+    prizeId: 8,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "基围虾",
+    prizeId: 9,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "烧茄子",
+    prizeId: 10,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "蒜香排骨",
+    prizeId: 11,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "炒花甲",
+    prizeId: 12,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "青椒土豆丝",
+    prizeId: 13,
+    prizeWeight: "100"
+  },
+  {
+    prizeName: "锅包肉",
+    prizeId: 14,
+    prizeWeight: "100"
+  }
+];
 if (!Array) {
-  const _easycom_unicloud_db2 = common_vendor.resolveComponent("unicloud-db");
-  const _easycom_uni_easyinput2 = common_vendor.resolveComponent("uni-easyinput");
+  const _easycom_up_button2 = common_vendor.resolveComponent("up-button");
   const _component_layout = common_vendor.resolveComponent("layout");
-  (_easycom_unicloud_db2 + _easycom_uni_easyinput2 + _component_layout)();
+  (_easycom_up_button2 + _component_layout)();
 }
-const _easycom_unicloud_db = () => "../../node-modules/@dcloudio/uni-components/lib/unicloud-db/unicloud-db.js";
-const _easycom_uni_easyinput = () => "../../uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.js";
+const _easycom_up_button = () => "../../uni_modules/uview-plus/components/u-button/u-button.js";
 if (!Math) {
-  (_easycom_unicloud_db + _easycom_uni_easyinput)();
+  (AlmostLottery + _easycom_up_button)();
 }
+const AlmostLottery = () => "../../uni_modules/almost-lottery/components/almost-lottery/almost-lottery.js";
 const _sfc_main = {
   __name: "index",
   setup(__props) {
-    common_vendor.ref([]);
-    const udbRef = common_vendor.ref();
-    const currentIndex = common_vendor.ref(1);
-    const timer = common_vendor.ref(null);
-    const newCookbook = common_vendor.ref();
-    const dataCode = common_vendor.ref();
-    const handleLoadData = (data, ended, pagination) => {
-      dataCode.value = data.length;
+    const prizeList = common_vendor.ref(Data);
+    const prizeIndex = common_vendor.ref(-1);
+    const prizeName = common_vendor.ref("???");
+    const handleDrawBefore = (callback) => {
+      let flag = true;
+      callback(flag);
     };
-    const handleAddCookbook = () => {
-      udbRef.value.add({ name: newCookbook.value, code: dataCode.value + 1 }, {
-        toastTitle: "新增成功",
-        // toast提示语
-        success: (res) => {
-          udbRef.value.loadData();
-        },
-        fail: (err) => {
-        },
-        complete: () => {
-        }
-      });
+    const handleDrawStart = () => {
+      prizeIndex.value = Math.ceil(Math.random() * 12);
     };
-    const handleStartRandom = () => {
-      timer.value = setInterval(() => {
-        currentIndex.value = Math.ceil(Math.random() * 12);
-      }, 10);
+    const handleDrawEnd = () => {
+      prizeName.value = prizeList.value[prizeIndex.value]["prizeName"];
     };
-    const handleStopRandom = () => {
-      clearInterval(timer.value);
-      timer.value = null;
+    const handleDrawFinish = (res) => {
     };
     return (_ctx, _cache) => {
       return common_vendor.e({
-        a: common_vendor.w(({
-          data,
-          loading,
-          error,
-          options
-        }, s0, i0) => {
-          return common_vendor.e({
-            a: error
-          }, error ? {
-            b: common_vendor.t(error.message)
-          } : {
-            c: common_vendor.t(data.filter((item, index) => item.code == currentIndex.value)[0].name)
-          }, {
-            d: i0,
-            e: s0
-          });
-        }, {
-          name: "d",
-          path: "a",
-          vueId: "1cf27b2a-1,1cf27b2a-0"
-        }),
-        b: common_vendor.sr(udbRef, "1cf27b2a-1,1cf27b2a-0", {
-          "k": "udbRef"
-        }),
-        c: common_vendor.o(handleLoadData),
-        d: common_vendor.p({
-          collection: "tp-cookbook-list"
-        }),
-        e: !timer.value
-      }, !timer.value ? {
-        f: common_vendor.o(handleStartRandom)
-      } : {
-        g: common_vendor.o(handleStopRandom)
-      }, {
-        h: common_vendor.o(($event) => newCookbook.value = $event),
+        a: common_vendor.t(prizeName.value),
+        b: prizeList.value.length
+      }, prizeList.value.length ? {
+        c: common_vendor.o(($event) => prizeIndex.value = -1),
+        d: common_vendor.o(handleDrawBefore),
+        e: common_vendor.o(handleDrawStart),
+        f: common_vendor.o(handleDrawEnd),
+        g: common_vendor.o(handleDrawFinish),
+        h: common_vendor.p({
+          prizeList: prizeList.value,
+          prizeIndex: prizeIndex.value
+        })
+      } : {}, {
         i: common_vendor.p({
-          placeholder: "请输入内容",
-          modelValue: newCookbook.value
-        }),
-        j: common_vendor.o(handleAddCookbook)
+          type: "primary",
+          icon: "map",
+          shape: "circle",
+          plain: true,
+          size: "small"
+        })
       });
     };
   }

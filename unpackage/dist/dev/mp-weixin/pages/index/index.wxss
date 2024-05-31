@@ -1,13 +1,24 @@
-/* 水平间距 */
-/* 水平间距 */
 .container.data-v-1cf27b2a {
-  padding-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 22px;
+  padding: 20px;
 }
-.op-btn.data-v-1cf27b2a {
+.title.data-v-1cf27b2a {
+  text-align: center;
+  font-weight: bold;
+  font-size: 52rpx;
+}
+.sub-title.data-v-1cf27b2a {
+  text-align: center;
+  font-size: 48rpx;
+  color: #141414;
+  margin-top: 60rpx;
+}
+.turntable.data-v-1cf27b2a {
+  margin-top: 120rpx;
+}
+.footer.data-v-1cf27b2a {
+  margin-top: 120rpx;
+}
+.footer-btn.data-v-1cf27b2a {
   margin-top: 20px;
   width: 120px;
   height: 32px;

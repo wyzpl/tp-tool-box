@@ -1,42 +1,72 @@
-{
-	"name": "蚂蚁上树",
-	"code": 1
-} {
-	"name": "柠檬鸡块",
-	"code": 2
-}
-
-{
-	"name": "菠萝咕咾肉",
-	"code": 3
-} {
-	"name": "排骨焖鸡",
-	"code": 4
-} {
-	"name": "干炒鸡块",
-	"code": 5
-} {
-	"name": "可乐鸡翅",
-	"code": 6
-} {
-	"name": "青椒牛肉丝",
-	"code": 7
-} {
-	"name": "番茄炒蛋",
-	"code": 8
-} {
-	"name": "青椒土豆丝",
-	"code": 2
-} {
-	"name": "基围虾",
-	"code": 9
-} {
-	"name": "烧茄子",
-	"code": 10
-} {
-	"name": "蒜香排骨",
-	"code": 11
-} {
-	"name": "炒花甲",
-	"code": 12
-}
+[
+  {
+    "prizeName": "蚂蚁上树",
+    "prizeId": 1,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "柠檬鸡块",
+    "prizeId": 2,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "菠萝咕咾肉",
+    "prizeId": 3,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "排骨焖鸡",
+    "prizeId": 4,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "干炒鸡块",
+    "prizeId": 5,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "可乐鸡翅",
+    "prizeId": 6,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "青椒牛肉丝",
+    "prizeId": 7,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "番茄炒蛋",
+    "prizeId": 8,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "基围虾",
+    "prizeId": 9,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "烧茄子",
+    "prizeId": 10,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "蒜香排骨",
+    "prizeId": 11,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "炒花甲",
+    "prizeId": 12,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "青椒土豆丝",
+    "prizeId": 13,
+    "prizeWeight": "100"
+  },
+  {
+    "prizeName": "锅包肉",
+    "prizeId": 14,
+    "prizeWeight": "100"
+  }
+]

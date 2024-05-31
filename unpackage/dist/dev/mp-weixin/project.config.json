@@ -7,8 +7,8 @@
   "setting": {
     "urlCheck": false,
     "es6": true,
-    "postcss": false,
-    "minified": false,
+    "postcss": true,
+    "minified": true,
     "newFeature": true,
     "bigPackageSizeSupport": true,
     "babelSetting": {
@@ -19,7 +19,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.4.5",
-  "appid": "touristappid",
+  "appid": "wx88e59fb8c418dd64",
   "projectname": "tp-tool-box",
   "condition": {},
   "editorSetting": {

@@ -1,1 +1,0 @@
-<view class="main-info data-v-27164826"><view wx:for="{{a}}" wx:for-item="item" wx:key="b" style="{{item.c}}" class="{{['item', 'data-v-27164826', item.d]}}" catchtap="{{item.e}}"><view class="item-name data-v-27164826">{{item.a}}</view></view></view>

@@ -1,12 +1,12 @@
 <template>
-	<view class="layout-wrap">
-		<slot></slot>
-	</view>
+  <view class="layout-wrap">
+    <up-navbar title="" placeholder @rightClick="rightClick" bgColor="transparent">
+      <template #left></template>
+    </up-navbar>
+    <slot></slot>
+  </view>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
-<style lang="scss">
-	
-</style>
+<style></style>

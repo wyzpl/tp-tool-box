@@ -1,84 +1,107 @@
 <template>
-	<layout>
-		<view class="container">
-			<!-- {{ list[currentIndex] }} -->
-			<unicloud-db ref="udbRef" v-slot:default="{data, loading, error, options}" collection="tp-cookbook-list" @load="handleLoadData">
+  <layout>
+    <view class="container">
+      <view class="title">Eat Next What ?</view>
+      <view class="sub-title">{{ prizeName }}</view>
+      <!-- <unicloud-db ref="udbRef" v-slot:default="{data, loading, error, options}" collection="tp-cookbook-list" @load="handleLoadData">
 				<view v-if="error">{{error.message}}</view>
 				<view v-else>
 					{{ data.filter( (item, index) => item.code == currentIndex)[0].name}}
 				</view>
-			</unicloud-db>
-		</view>
-		
-		<button type="primary" class="op-btn" @click="handleStartRandom" v-if="!timer">帮我选</button>
-		<button type="warn" class="op-btn" @click="handleStopRandom" v-else>就它了</button>
-		
-		<uni-easyinput class="op-btn" v-model="newCookbook" placeholder="请输入内容"></uni-easyinput>
-		<button  class="op-btn"type="default" @click="handleAddCookbook">新增菜品</button>
-	</layout>
+			</unicloud-db> -->
+
+      <view class="turntable">
+       <almost-lottery
+          :prizeList="prizeList"
+          :prizeIndex="prizeIndex"
+          @reset-index="prizeIndex = -1"
+          @draw-before="handleDrawBefore"
+          @draw-start="handleDrawStart"
+          @draw-end="handleDrawEnd"
+          @finish="handleDrawFinish"
+          v-if="prizeList.length"
+        />
+      </view>
+
+      <view class="footer">
+        <view class="footer-btn">
+          <up-button style="border-radius: 50%; width: 100px" type="primary" icon="map" shape="circle" plain size="small"></up-button>
+        </view>
+      </view>
+    </view>
+  </layout>
 </template>
 
 <script setup>
-	
-	import {  ref } from 'vue'
-	import { onLoad } from '@dcloudio/uni-app'
-	const list = ref([])
-	// onLoad(()=>{
-	// 	let cookbook = ['香菜','花生米','啤酒','鸭脖','鸡爪','烤生蚝','炒粉','煎饼果子','金拱门','襄阳牛肉面','韩式烤肉','螺蛳粉','四川凉菜','木桶饭']
-	// 	uni.setStorageSync('cookbook',cookbook)
-	// 	list.value = cookbook
-	// })
-	
-	const udbRef = ref()
-	const currentIndex = ref(1)
-	const timer = ref(null)
-	const newCookbook = ref()
-	const dataCode = ref()
-	/* 处理数据 */
-	const handleLoadData = (data, ended, pagination) =>{
-		dataCode.value = data.length
-	}
-	/* 新增菜单 */
-	const handleAddCookbook = ()=>{
-		udbRef.value.add({name:newCookbook.value,code:dataCode.value+1},{
-			toastTitle: '新增成功', // toast提示语
-			  success: (res) => { // 新增成功后的回调
-			    const { code, message } = res
-				udbRef.value.loadData()
-			  },
-			  fail: (err) => { // 新增失败后的回调
-			    const { message } = err
-			  },
-			  complete: () => { // 完成后的回调
-			  }
-		})
-	}
-	/* 开始随机 */
-	const handleStartRandom = ()=>{
-		 timer.value = setInterval(()=>{
-			currentIndex.value = Math.ceil(Math.random()*12)
-		},10)
-	}
-	const handleStopRandom = ()=>{
-		clearInterval(timer.value)
-		timer.value = null
-	}
+import { ref } from "vue";
+import { onLoad } from "@dcloudio/uni-app";
+import AlmostLottery from "@/uni_modules/almost-lottery/components/almost-lottery/almost-lottery.vue";
+import Data from "@/api/tp-cookbook-list.json";
+ 
+/* 数据列表 */
+const prizeList = ref(Data);
+/* 选中数据的下标 */
+const prizeIndex = ref(-1);
+/* 选中数据的名称 */
+const prizeName = ref("???");
+// 本次抽奖开始之前
+const handleDrawBefore = (callback) => {
+  // 这里需要处理你抽奖之前的逻辑
+  // 请查看示例项目中的代码
+  // 必须调用 callback 并传递一个布尔值，布尔值为 true 时，转盘才会开始旋转
+  let flag = true;
+
+  callback(flag);
+};
+// 本次抽奖开始
+const handleDrawStart = () => {
+  // 这里需要处理你的抽奖逻辑，并得出中奖物品的 prizeIndex
+  // 请查看示例项目中的代码
+  prizeIndex.value = Math.ceil(Math.random() * 12);
+};
+// 本次抽奖结束
+const handleDrawEnd = () => {
+  // 完成抽奖后，这里处理你拿到结果后的逻辑
+  // 请查看示例项目中的代码
+  prizeName.value = prizeList.value[prizeIndex.value]["prizeName"];
+};
+// 抽奖转盘绘制完成
+const handleDrawFinish = (res) => {
+  // 抽奖转盘准备就绪后，这里处理你的逻辑
+  // 请查看示例项目中的代码
+  // console.log('抽奖转盘绘制完成', res)
+};
 </script>
 
 <style lang="scss" scoped>
-	.container {
-		padding-top: 20px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 22px;
+.container {
+  padding: 20px;
+}
 
-	}
-	
-	.op-btn{
-		margin-top:20px;
-		width: 120px ;
-		height: 32px ;
-		line-height: 32px ;
-	}
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 52rpx;
+}
+
+.sub-title {
+  text-align: center;
+  font-size: 48rpx;
+  color: #141414;
+  margin-top: 60rpx;
+}
+
+.turntable {
+  margin-top: 120rpx;
+}
+
+.footer {
+  margin-top: 120rpx;
+}
+.footer-btn {
+  margin-top: 20px;
+  width: 120px;
+  height: 32px;
+  line-height: 32px;
+}
 </style>

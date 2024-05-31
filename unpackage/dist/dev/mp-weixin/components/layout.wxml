@@ -1,1 +1,1 @@
-<view class="layout-wrap"><slot></slot></view>
+<view class="layout-wrap"><up-navbar wx:if="{{b}}" u-s="{{['left']}}" bindrightClick="{{a}}" u-i="3cc02f8f-0" bind:__l="__l" u-p="{{b}}"><view slot="left"></view></up-navbar><slot></slot></view>
